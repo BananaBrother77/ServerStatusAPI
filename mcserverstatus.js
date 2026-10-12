@@ -23,8 +23,13 @@ export async function getStatus(host, port, bedrock) {
       host,
       port,
       version: data.version?.name ?? null,
-      players: { online: data.players.online, max: data.players.max },
+      players: {
+        online: data.players.online,
+        max: data.players.max,
+        list: data.players.sample ?? [],
+      },
       motd: data.motd?.clean ?? '',
+      motdHtml: data.motd?.html ?? '',
       favicon: data.favicon ?? null,
       latency: Date.now() - started,
     };
